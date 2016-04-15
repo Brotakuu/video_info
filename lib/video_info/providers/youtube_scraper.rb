@@ -52,6 +52,10 @@ class VideoInfo
         data.css('div.watch-view-count').text.gsub(/\D/, '').to_i
       end
 
+      def live_stream
+        nil
+      end
+
       private
 
       def meta_nodes

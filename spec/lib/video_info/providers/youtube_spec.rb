@@ -123,6 +123,11 @@ require 'spec_helper'
           subject { super().view_count }
           it { is_expected.to be == 0 }
         end
+
+        describe '#live_stream' do
+          subject { super().live_stream }
+          it { is_expected.to eq nil }
+        end
       end
 
       context 'with video removed because of copyright claim', :vcr do
@@ -254,6 +259,18 @@ require 'spec_helper'
       describe '#view_count' do
         subject { super().view_count }
         it { is_expected.to be > 4000 }
+      end
+
+      describe '#live_stream' do
+        subject { super().live_stream }
+
+        it 'should return live stream status' do
+          if api_key.nil?
+            is_expected.to eq nil
+          else
+            is_expected.to eq 'none'
+          end
+        end
       end
     end
 
@@ -551,6 +568,18 @@ require 'spec_helper'
       describe '#view_count' do
         subject { super().view_count }
         it { is_expected.to be > 4000 }
+      end
+
+      describe '#live_stream' do
+        subject { super().live_stream }
+
+        it 'should return live stream status' do
+          if api_key.nil?
+            is_expected.to eq nil
+          else
+            is_expected.to eq 'none'
+          end
+        end
       end
     end
   end

@@ -44,6 +44,10 @@ class VideoInfo
         _video_statistics['viewCount'].to_i
       end
 
+      def live_stream
+        _video_snippet['liveBroadcastContent']
+      end
+
       private
 
       def available?
